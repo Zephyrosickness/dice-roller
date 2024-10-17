@@ -51,7 +51,7 @@ public class Root {
         Player.initPlayers(); //initalizes player list (creates objects for each player, sets their score to 0)
 
         //allows user to add names for players instead of it all being player 1/2/3
-        message = "Would you like to add a name to any players? [Y/N]\nDefault names are simply Player 1/2/3..[etc.]"; //yes, you can just pass this as one block of text into the checksum but that makes it long. this is more readable even if theres an extraneous variable/line or two floatin around
+        message = "Would you like to add a name to any players? [Y/N]\nIf unchanged, default names are Player 1/2/3..[etc.]"; //yes, you can just pass this as one block of text into the checksum but that makes it long. this is more readable even if theres an extraneous variable/line or two floatin around
         if(YNStringCheck(message)){playerName();}
 
         //input/output roll cap
