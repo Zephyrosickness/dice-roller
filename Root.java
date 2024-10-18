@@ -8,7 +8,7 @@ import java.util.*;
 --[methods are placed in the logical order they would be called in a program]--
 
 -[Root Class]- (the main class)
-* inputChecksum: used when inputting int values, makes sure input value is an int and meets minimum/maximum requirements before proceeding and returning the int
+* intChecksum: used when inputting int values, makes sure input value is an int and meets minimum/maximum requirements before proceeding and returning the int
 * YNStringCheck: used for a [Y/N] prompt, makes sure user inputs [Y/N] or [yes/no] (case-insensitive) before returning false if user input N, and true for Y
 * playerName: renames any players from the default Player 1/2 naming-scheme, passes an int (player index) and a string into one of the Player-class constructors which does the renaming
 
@@ -47,7 +47,7 @@ public class Root {
         String message = "How many players? ";
 
         //input/output Player count
-        players = inputChecksum(PLAYER_MIN, PLAYER_CAP, message);
+        players = intChecksum(PLAYER_MIN, PLAYER_CAP, message);
         Player.initPlayers(); //initalizes player list (creates objects for each player, sets their score to 0)
 
         //allows user to add names for players instead of it all being player 1/2/3
@@ -56,7 +56,7 @@ public class Root {
 
         //input/output roll cap
         message = "What do you want the maximum roll number to be? ";
-        maxRoll = inputChecksum(ROLL_MIN, ROLL_CAP, message);
+        maxRoll = intChecksum(ROLL_MIN, ROLL_CAP, message);
 
         System.out.println("[[[-----GAME-START!-----]]]");
 
@@ -73,7 +73,7 @@ public class Root {
     }
 
     //used when inputting int values, makes sure input value is an int and meets minimum/maximum requirements before proceeding and returning the int
-    private static int inputChecksum(int MIN, int MAX300, String message) { //"why is the maximum variable called max300" BRO IT'S A DDR REF ITS FUN LET ME HAVE THIS
+    private static int intChecksum(int MIN, int MAX300, String message) { //"why is the maximum variable called max300" BRO IT'S A DDR REF ITS FUN LET ME HAVE THIS
         //init var
         Scanner scan = new Scanner(System.in);
         int input = 0; //i still hate having to initialze variables bruh "input is not initialized" NO BRO IT IS INITIALIZED IN THE SCANNER CALM DOWN!!!
@@ -88,6 +88,7 @@ public class Root {
                 if(input <= MAX300 && input >= MIN) {exitStatus = true;  //exits do while if the input is not bigger than the maximum value and isnt a negative number
                 }else{System.out.println("The input you've entered does not meet the range. " + MINMAX_DISPLAY);} //if input is an int but is too large or small
             }else{System.out.println("The input you've entered is not the correct type. You must enter a valid integer. " + MINMAX_DISPLAY);} //if user enters string or double
+            if(!exitStatus){scan.nextLine();}
         }while(!exitStatus);
         return input;
     }
@@ -129,7 +130,7 @@ public class Root {
             }else{
 
                 //i/o player index
-                int playerIndexInput = inputChecksum(1, players, "Which player do you want to set a name for? ");
+                int playerIndexInput = intChecksum(1, players, "Which player do you want to set a name for? ");
 
                 //adds index to the list of renamed players if player was renamed for the first time
                 if (!(renamedPlayers.contains(playerIndexInput))) {renamedPlayers.add(playerIndexInput);}
