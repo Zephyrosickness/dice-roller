@@ -62,7 +62,7 @@ public class Root {
 
         message = "Do you want to roll again? [Y/N] [Your scores will save if you do another round.]";
 
-        while(true){ //intellij here says the loop cannot end without an exception; but this is a false positive. the loop CAN end, since the playAgain(); method includes system.exit if you choose to not play again
+        while(true){
             new Player(); //runs constructor method in player class (rolls, adds to score, and displays scores
             //if player chooses to play again; does nothing and allows the loops to run again | if player doesnt want to play again; terminates program
             if(!YNStringCheck(message)){
